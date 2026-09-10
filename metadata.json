@@ -1,0 +1,6 @@
+{
+  "name": "Trip Mapper & Vacation Planner",
+  "description": "Interactive travel itinerary visualizer and AI vacation concierge that maps routes, stays, and activities with smart place recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

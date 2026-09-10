@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "Display name" },
+        "photoURL": { "type": "string", "description": "Avatar URL" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      },
+      "required": ["uid", "createdAt"]
+    },
+    "Trip": {
+      "title": "Trip",
+      "description": "Vacation itinerary details, routes, stops, and settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Trip ID" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "title": { "type": "string", "description": "Trip title" },
+        "description": { "type": "string", "description": "Trip summary" },
+        "startDate": { "type": "string", "description": "Start date" },
+        "endDate": { "type": "string", "description": "End date" },
+        "rawItinerary": { "type": "string", "description": "Raw pasted TripIt text" },
+        "stops": { "type": "string", "description": "JSON stringified stops array" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp" }
+      },
+      "required": ["id", "userId", "title"]
+    },
+    "SavedPlace": {
+      "title": "SavedPlace",
+      "description": "Saved recommendations and places of interest for vacation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Place ID" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "tripId": { "type": "string", "description": "Associated trip ID" },
+        "name": { "type": "string", "description": "Place name" },
+        "category": { "type": "string", "description": "Category (sight, restaurant, activity, etc.)" },
+        "address": { "type": "string", "description": "Location address or description" },
+        "city": { "type": "string", "description": "City or destination name" },
+        "lat": { "type": "number", "description": "Latitude" },
+        "lng": { "type": "number", "description": "Longitude" },
+        "notes": { "type": "string", "description": "Personal note or tip" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      },
+      "required": ["id", "userId", "tripId", "name"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents"
+    },
+    "/trips/{tripId}": {
+      "schema": "Trip",
+      "description": "User vacation trips and mapped itineraries"
+    },
+    "/trips/{tripId}/savedPlaces/{placeId}": {
+      "schema": "SavedPlace",
+      "description": "Curated or suggested places to visit for a specific trip"
+    }
+  }
+}
